@@ -1,0 +1,8 @@
+/.idea/
+/static/
+__pycache__/
+.coverage
+/_tests_coverage_html_report/
+/*.log
+/mmvb_accounting/local_settings.py
+/db.sqlite3
