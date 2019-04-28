@@ -33,6 +33,9 @@ if ! [ -f $DATA_BASE_FILE ]
         read first_username
         echo "    Шаг 3.3. 2 раза введите пароль первого пользователя:"
         ./manage.py createsuperuser --email $first_email --username $first_username
+    else
+        echo "    Обновление стркутуры базы данных при необходимости."
+        ./manage.py migrate
 fi
 
 echo "    Всё готово. Для управления пользователями используйте одну из этих ссылок:"

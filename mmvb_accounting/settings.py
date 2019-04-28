@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'MmvbMain',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,7 @@ STATICFILES_DIRS = (
 )
 
 LOGOUT_REDIRECT_URL = 'index.html'
+AUTH_USER_MODEL = 'MmvbMain.UserProfile'
 
 try:
     from .local_settings import *

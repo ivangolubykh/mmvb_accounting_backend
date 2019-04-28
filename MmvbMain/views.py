@@ -19,4 +19,3 @@ class GetSessionData(viewsets.ViewSet):
             last_name=request.user.last_name,
         )
         return Response(context)
-
