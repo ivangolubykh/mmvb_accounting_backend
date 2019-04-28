@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
+from django.utils.translation import gettext_lazy as _
 
 __author__ = 'Иван Голубых'
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -109,17 +110,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
+# https://ustimov.org/posts/1/
+# ./manage.py makemessages -l ru
+# ./manage.py compilemessages
 # LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'ru-RU'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'ru-ru'  # Язык по умолчанию
 USE_I18N = True
-
 USE_L10N = True
+LANGUAGES = (
+  ('ru', _('Russian')),
+  ('en', _('English')),
+)
+LOCALE_PATHS = (
+	os.path.join(BASE_DIR, 'locale'),
+)
+
 
 USE_TZ = True
-
+TIME_ZONE = 'UTC'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

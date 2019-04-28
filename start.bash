@@ -27,13 +27,17 @@ if ! [ -f $DATA_BASE_FILE ]
         pip install -r requirements.txt
         echo "    Шаг 2. Создается начальная база данных."
         ./manage.py migrate
-        echo "    Шаг 3.1. Введите E-mail адрес первого пользователя:"
+        echo "    Шаг 3. Создаются фалы локализации."
+        ./manage.py compilemessages
+        echo "    Шаг 4.1. Введите E-mail адрес первого пользователя:"
         read first_email
-        echo "    Шаг 3.2. Введите логин первого пользователя:"
+        echo "    Шаг 4.2. Введите логин первого пользователя:"
         read first_username
-        echo "    Шаг 3.3. 2 раза введите пароль первого пользователя:"
+        echo "    Шаг 4.3. 2 раза введите пароль первого пользователя:"
         ./manage.py createsuperuser --email $first_email --username $first_username
     else
+        echo "    Создаются фалы локализации."
+        ./manage.py compilemessages
         echo "    Обновление стркутуры базы данных при необходимости."
         ./manage.py migrate
 fi
