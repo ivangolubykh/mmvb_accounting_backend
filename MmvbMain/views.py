@@ -1,8 +1,14 @@
 from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.decorators import action
+from rest_framework.generics import ListCreateAPIView
+from rest_framework.mixins import RetrieveModelMixin
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.viewsets import ViewSetMixin
+
+from .models import Regions
+from .serializers import RegionsSerializer
 
 
 class GetSessionData(viewsets.ViewSet):
@@ -19,3 +25,8 @@ class GetSessionData(viewsets.ViewSet):
             last_name=request.user.last_name,
         )
         return Response(context)
+
+
+class RegionView(ViewSetMixin, RetrieveModelMixin, ListCreateAPIView):
+    queryset = Regions.objects.all()
+    serializer_class = RegionsSerializer
