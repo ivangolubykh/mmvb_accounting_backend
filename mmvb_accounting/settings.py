@@ -118,11 +118,11 @@ LANGUAGE_CODE = 'ru-ru'  # Язык по умолчанию
 USE_I18N = True
 USE_L10N = True
 LANGUAGES = (
-  ('ru', _('Russian')),
-  ('en', _('English')),
+    ('ru', _('Russian')),
+    ('en', _('English')),
 )
 LOCALE_PATHS = (
-	os.path.join(BASE_DIR, 'locale'),
+    os.path.join(BASE_DIR, 'locale'),
 )
 
 

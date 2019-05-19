@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.mixins import RetrieveModelMixin
+from rest_framework.mixins import UpdateModelMixin
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSetMixin
@@ -27,6 +28,10 @@ class GetSessionData(viewsets.ViewSet):
         return Response(context)
 
 
-class RegionView(ViewSetMixin, RetrieveModelMixin, ListCreateAPIView):
+class RegionView(ViewSetMixin, RetrieveModelMixin, UpdateModelMixin, ListCreateAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = Regions.objects.all()
     serializer_class = RegionsSerializer
+
+    def post(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
