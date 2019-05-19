@@ -11,5 +11,4 @@ router.register(r'region_fias', views.RegionView)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

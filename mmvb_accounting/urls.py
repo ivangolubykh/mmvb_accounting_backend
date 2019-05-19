@@ -25,6 +25,7 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('MmvbMain.urls')),
+    path('api-auth/', include('Auth.urls', namespace='Auth')),
 ]
 
 if settings.DEBUG:

@@ -6,4 +6,3 @@ __pycache__/
 /*.log
 /mmvb_accounting/local_settings.py
 /db.sqlite3
-*.mo
