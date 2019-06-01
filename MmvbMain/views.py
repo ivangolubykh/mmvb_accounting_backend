@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.generics import ListCreateAPIView
+from rest_framework.mixins import DestroyModelMixin
 from rest_framework.mixins import RetrieveModelMixin
 from rest_framework.mixins import UpdateModelMixin
 from rest_framework.permissions import IsAuthenticated
@@ -28,10 +29,12 @@ class GetSessionData(viewsets.ViewSet):
         return Response(context)
 
 
-class RegionView(ViewSetMixin, RetrieveModelMixin, UpdateModelMixin, ListCreateAPIView):
+class RegionView(ViewSetMixin, DestroyModelMixin, RetrieveModelMixin, UpdateModelMixin, ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Regions.objects.all()
     serializer_class = RegionsSerializer
 
     def post(self, request, *args, **kwargs):
+        if 'destroy_model_instance' in request.data and request.data['destroy_model_instance'] == 'true':
+            return self.delete(request, *args, **kwargs)
         return self.update(request, *args, **kwargs)
