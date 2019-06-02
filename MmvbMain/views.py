@@ -9,8 +9,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSetMixin
 
+from .models import Issuers
 from .models import Regions
+from .serializers import IssuersSerializer
 from .serializers import RegionsSerializer
+from .serializers import RegionsNameListSerializer
 
 
 class GetSessionData(viewsets.ViewSet):
@@ -29,12 +32,24 @@ class GetSessionData(viewsets.ViewSet):
         return Response(context)
 
 
-class RegionView(ViewSetMixin, DestroyModelMixin, RetrieveModelMixin, UpdateModelMixin, ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
-    queryset = Regions.objects.all()
-    serializer_class = RegionsSerializer
-
+class AbstractMmvbView(ViewSetMixin, DestroyModelMixin, RetrieveModelMixin, UpdateModelMixin, ListCreateAPIView):
     def post(self, request, *args, **kwargs):
         if 'destroy_model_instance' in request.data and request.data['destroy_model_instance'] == 'true':
-            return self.delete(request, *args, **kwargs)
+            return self.destroy(request, *args, **kwargs)
         return self.update(request, *args, **kwargs)
+
+
+class IssuerView(AbstractMmvbView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Issuers.objects.all().select_related('region').order_by('name')
+    serializer_class = IssuersSerializer
+
+
+class RegionView(AbstractMmvbView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Regions.objects.order_by('munitipal_name')
+
+    def get_serializer_class(self):
+        if 'only_name' in self.request.query_params and self.request.query_params['only_name'] == 'true':
+            return RegionsNameListSerializer
+        return RegionsSerializer

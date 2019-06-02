@@ -7,6 +7,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'get_session_data', views.GetSessionData, basename='session')
+router.register(r'issuers', views.IssuerView)
 router.register(r'region_fias', views.RegionView)
 
 urlpatterns = [

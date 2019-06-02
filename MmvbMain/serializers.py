@@ -1,6 +1,27 @@
 from rest_framework import serializers
 
+from .models import Issuers
 from .models import Regions
+
+
+class IssuersSerializer(serializers.HyperlinkedModelSerializer):
+    region_name = serializers.SerializerMethodField()
+
+    def get_region_name(self, obj):
+        if obj.region:
+            return obj.region.munitipal_name
+
+    class Meta:
+        model = Issuers
+        fields = (
+            'url',
+            'comment',
+            'name',
+            'ogrn',
+            'region',
+            'region_name',
+            'site',
+        )
 
 
 class RegionsSerializer(serializers.HyperlinkedModelSerializer):
@@ -15,4 +36,14 @@ class RegionsSerializer(serializers.HyperlinkedModelSerializer):
             'oktmo_code',
             'postcode',
             'state_uuid',
+        )
+
+
+class RegionsNameListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Regions
+        fields = (
+            # 'id',
+            'url',
+            'munitipal_name',
         )
