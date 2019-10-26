@@ -13,7 +13,7 @@ class BrokerageAccounts(models.Model):
     name = models.CharField(_('Brokerage account name'), max_length=256, unique=True)
 
     def __str__(self):
-        return '{} "{}", pk={}'.format(_('Issuer'), self.name, self.pk)
+        return '{} "{}", pk={}'.format(_('Brokerage account'), self.name, self.pk)
 
 
 class Issuers(models.Model):
@@ -59,3 +59,15 @@ class Regions(models.Model):
 
     def __str__(self):
         return '{} "{}", pk={}'.format(_('Regions'), self.munitipal_name, self.pk)
+
+
+class SecuritiesTypes(models.Model):
+    class Meta:
+        verbose_name = _('Type of Securities')
+        verbose_name_plural = _('Types of Securities')
+
+    comment = models.TextField(_('Comment'), blank=True, null=True)
+    name = models.CharField(_('Name of securities type'), max_length=256, unique=True)
+
+    def __str__(self):
+        return '{} "{}", pk={}'.format(_('Type of Securities is'), self.name, self.pk)

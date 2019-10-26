@@ -12,10 +12,12 @@ from rest_framework.viewsets import ViewSetMixin
 from .models import BrokerageAccounts
 from .models import Issuers
 from .models import Regions
+from .models import SecuritiesTypes
 from .serializers import BrokerageAccountsSerializer
 from .serializers import IssuersSerializer
 from .serializers import RegionsSerializer
 from .serializers import RegionsNameListSerializer
+from .serializers import SecuritiesTypesSerializer
 
 
 class GetSessionData(viewsets.ViewSet):
@@ -61,3 +63,9 @@ class RegionView(AbstractMmvbView):
         if 'only_name' in self.request.query_params and self.request.query_params['only_name'] == 'true':
             return RegionsNameListSerializer
         return RegionsSerializer
+
+
+class SecuritiesTypesView(AbstractMmvbView):
+    permission_classes = (IsAuthenticated,)
+    queryset = SecuritiesTypes.objects.order_by('name')
+    serializer_class = SecuritiesTypesSerializer

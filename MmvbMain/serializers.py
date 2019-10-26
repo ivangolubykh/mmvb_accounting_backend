@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import BrokerageAccounts
 from .models import Issuers
 from .models import Regions
+from .models import SecuritiesTypes
 
 
 class BrokerageAccountsSerializer(serializers.HyperlinkedModelSerializer):
@@ -57,4 +58,14 @@ class RegionsNameListSerializer(serializers.ModelSerializer):
             # 'id',
             'url',
             'munitipal_name',
+        )
+
+
+class SecuritiesTypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SecuritiesTypes
+        fields = (
+            'url',
+            'comment',
+            'name',
         )

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-26 10:23+0000\n"
-"PO-Revision-Date: 2019-10-26 13:14+0300\n"
+"POT-Creation-Date: 2019-10-26 15:46+0000\n"
+"PO-Revision-Date: 2019-10-26 18:51+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -20,7 +20,7 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: MmvbMain/models.py:9
+#: MmvbMain/models.py:9 MmvbMain/models.py:16
 msgid "Brokerage account"
 msgstr "Брокерский счёт"
 
@@ -29,6 +29,7 @@ msgid "Brokerage accounts"
 msgstr "Брокерские счета"
 
 #: MmvbMain/models.py:12 MmvbMain/models.py:24 MmvbMain/models.py:53
+#: MmvbMain/models.py:69
 msgid "Comment"
 msgstr "Комментарий"
 
@@ -36,7 +37,7 @@ msgstr "Комментарий"
 msgid "Brokerage account name"
 msgstr "Название брокерского счёта"
 
-#: MmvbMain/models.py:16 MmvbMain/models.py:21 MmvbMain/models.py:44
+#: MmvbMain/models.py:21 MmvbMain/models.py:44
 msgid "Issuer"
 msgstr "Эмитент"
 
@@ -87,3 +88,19 @@ msgstr "Почтовый индекс"
 #: MmvbMain/models.py:58
 msgid "Unique number in the state address register"
 msgstr "Уникальный номер в государственном адресном реестре"
+
+#: MmvbMain/models.py:66
+msgid "Type of Securities"
+msgstr "Тип ценных бумаг"
+
+#: MmvbMain/models.py:67
+msgid "Types of Securities"
+msgstr "Типы ценных бумаг"
+
+#: MmvbMain/models.py:70
+msgid "Name of securities type"
+msgstr "Название типа ценных бумаг"
+
+#: MmvbMain/models.py:73
+msgid "Type of Securities is"
+msgstr "Тип ценных бумаг"
