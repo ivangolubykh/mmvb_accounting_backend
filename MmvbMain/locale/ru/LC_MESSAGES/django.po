@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-19 09:58+0000\n"
-"PO-Revision-Date: 2019-04-28 11:55+0300\n"
+"POT-Creation-Date: 2019-10-26 10:23+0000\n"
+"PO-Revision-Date: 2019-10-26 13:14+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -20,85 +20,70 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: MmvbMain/models.py:8 MmvbMain/models.py:20
-msgid "Region"
-msgstr "Регион"
-
 #: MmvbMain/models.py:9
-msgid "Regions"
-msgstr "Регионы"
+msgid "Brokerage account"
+msgstr "Брокерский счёт"
 
-#: MmvbMain/models.py:11
-msgid "Administrative name"
-msgstr "Административное имя"
+#: MmvbMain/models.py:10
+msgid "Brokerage accounts"
+msgstr "Брокерские счета"
 
-#: MmvbMain/models.py:12
+#: MmvbMain/models.py:12 MmvbMain/models.py:24 MmvbMain/models.py:53
 msgid "Comment"
 msgstr "Комментарий"
 
 #: MmvbMain/models.py:13
+msgid "Brokerage account name"
+msgstr "Название брокерского счёта"
+
+#: MmvbMain/models.py:16 MmvbMain/models.py:21 MmvbMain/models.py:44
+msgid "Issuer"
+msgstr "Эмитент"
+
+#: MmvbMain/models.py:22
+msgid "Issuers"
+msgstr "Эмитенты"
+
+#: MmvbMain/models.py:25
+msgid "Name company"
+msgstr "Название компании"
+
+#: MmvbMain/models.py:31
+msgid "OGRN number"
+msgstr "Номер ОГРН"
+
+#: MmvbMain/models.py:39 MmvbMain/models.py:50 MmvbMain/models.py:61
+msgid "Regions"
+msgstr "Регионы"
+
+#: MmvbMain/models.py:41
+msgid "The site of the company"
+msgstr "Сайт компании"
+
+#: MmvbMain/models.py:49
+msgid "Region"
+msgstr "Регион"
+
+#: MmvbMain/models.py:52
+msgid "Administrative name"
+msgstr "Административное имя"
+
+#: MmvbMain/models.py:54
 msgid "Municipal name"
 msgstr "Муниципальное название"
 
-#: MmvbMain/models.py:14
+#: MmvbMain/models.py:55
 msgid "OKATO code"
 msgstr "Код ОКАТО"
 
-#: MmvbMain/models.py:15
+#: MmvbMain/models.py:56
 msgid "OKTMO code"
 msgstr "Код ОКТМО"
 
-#: MmvbMain/models.py:16
+#: MmvbMain/models.py:57
 msgid "Postcode"
 msgstr "Почтовый индекс"
 
-#: MmvbMain/models.py:17
+#: MmvbMain/models.py:58
 msgid "Unique number in the state address register"
 msgstr "Уникальный номер в государственном адресном реестре"
-
-#~ msgid "username"
-#~ msgstr "Имя пользователя"
-
-#~ msgid ""
-#~ "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-#~ msgstr ""
-#~ "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы "
-#~ "@/./+/-/_."
-
-#~ msgid "A user with that username already exists."
-#~ msgstr "Пользователь с таким именем уже существует."
-
-#~ msgid "first name"
-#~ msgstr "имя"
-
-#~ msgid "last name"
-#~ msgstr "фамилия"
-
-#~ msgid "email address"
-#~ msgstr "адрес электронной почты"
-
-#~ msgid "staff status"
-#~ msgstr "статус персонала"
-
-#~ msgid "Designates whether the user can log into this admin site."
-#~ msgstr ""
-#~ "Отметьте, если пользователь может входить в административную часть сайта."
-
-#~ msgid "active"
-#~ msgstr "активный"
-
-#~ msgid ""
-#~ "Designates whether this user should be treated as active. Unselect this "
-#~ "instead of deleting accounts."
-#~ msgstr ""
-#~ "Отметьте, если пользователь должен считаться активным. Уберите эту "
-#~ "отметку вместо удаления учётной записи."
-
-#~ msgid "date joined"
-#~ msgstr "дата регистрации"
-
-#~ msgid "user"
-#~ msgstr "пользователь"
-
-#~ msgid "users"
-#~ msgstr "пользователи"

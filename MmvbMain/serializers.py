@@ -1,7 +1,18 @@
 from rest_framework import serializers
 
+from .models import BrokerageAccounts
 from .models import Issuers
 from .models import Regions
+
+
+class BrokerageAccountsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = BrokerageAccounts
+        fields = (
+            'url',
+            'comment',
+            'name',
+        )
 
 
 class IssuersSerializer(serializers.HyperlinkedModelSerializer):

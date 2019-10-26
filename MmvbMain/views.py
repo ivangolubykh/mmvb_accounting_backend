@@ -9,8 +9,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSetMixin
 
+from .models import BrokerageAccounts
 from .models import Issuers
 from .models import Regions
+from .serializers import BrokerageAccountsSerializer
 from .serializers import IssuersSerializer
 from .serializers import RegionsSerializer
 from .serializers import RegionsNameListSerializer
@@ -37,6 +39,12 @@ class AbstractMmvbView(ViewSetMixin, DestroyModelMixin, RetrieveModelMixin, Upda
         if 'destroy_model_instance' in request.data and request.data['destroy_model_instance'] == 'true':
             return self.destroy(request, *args, **kwargs)
         return self.update(request, *args, **kwargs)
+
+
+class BrokerageAccountsView(AbstractMmvbView):
+    permission_classes = (IsAuthenticated,)
+    queryset = BrokerageAccounts.objects.all().order_by('name')
+    serializer_class = BrokerageAccountsSerializer
 
 
 class IssuerView(AbstractMmvbView):

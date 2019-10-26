@@ -4,6 +4,18 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+class BrokerageAccounts(models.Model):
+    class Meta:
+        verbose_name = _('Brokerage account')
+        verbose_name_plural = _('Brokerage accounts')
+
+    comment = models.TextField(_('Comment'), blank=True, null=True)
+    name = models.CharField(_('Brokerage account name'), max_length=256, unique=True)
+
+    def __str__(self):
+        return '{} "{}", pk={}'.format(_('Issuer'), self.name, self.pk)
+
+
 class Issuers(models.Model):
     class Meta:
         verbose_name = _('Issuer')
@@ -26,7 +38,7 @@ class Issuers(models.Model):
         to='Regions',
         verbose_name=_('Regions'),
     )
-    site = models.URLField(_('Site company'), blank=True, null=True)
+    site = models.URLField(_('The site of the company'), blank=True, null=True)
 
     def __str__(self):
         return '{} "{}", pk={}'.format(_('Issuer'), self.name, self.pk)
