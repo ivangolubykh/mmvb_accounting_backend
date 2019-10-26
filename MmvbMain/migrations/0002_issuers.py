@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=256, unique=True, verbose_name='Name company')),
                 ('ogrn', models.URLField(blank=True, max_length=13, null=True, validators=[django.core.validators.MinLengthValidator(limit_value=13), django.core.validators.MaxLengthValidator(limit_value=13)], verbose_name='OGRN number')),
                 ('site', models.URLField(blank=True, null=True, verbose_name='Site company')),
-                ('region', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='issuers', to='MmvbMain.Regions', verbose_name='Region')),
+                ('regions', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='issuers', to='MmvbMain.Regions', verbose_name='Region')),
             ],
             options={
                 'verbose_name': 'Issuer',

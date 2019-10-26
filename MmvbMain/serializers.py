@@ -8,8 +8,8 @@ class IssuersSerializer(serializers.HyperlinkedModelSerializer):
     region_name = serializers.SerializerMethodField()
 
     def get_region_name(self, obj):
-        if obj.region:
-            return obj.region.munitipal_name
+        if obj.regions:
+            return obj.regions.munitipal_name
 
     class Meta:
         model = Issuers
@@ -18,7 +18,7 @@ class IssuersSerializer(serializers.HyperlinkedModelSerializer):
             'comment',
             'name',
             'ogrn',
-            'region',
+            'regions',
             'region_name',
             'site',
         )

@@ -41,7 +41,7 @@ class AbstractMmvbView(ViewSetMixin, DestroyModelMixin, RetrieveModelMixin, Upda
 
 class IssuerView(AbstractMmvbView):
     permission_classes = (IsAuthenticated,)
-    queryset = Issuers.objects.all().select_related('region').order_by('name')
+    queryset = Issuers.objects.all().select_related('regions').order_by('name')
     serializer_class = IssuersSerializer
 
 

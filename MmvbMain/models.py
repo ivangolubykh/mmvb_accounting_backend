@@ -18,13 +18,13 @@ class Issuers(models.Model):
         validators=[MinLengthValidator(limit_value=13), MaxLengthValidator(limit_value=13)],
         verbose_name=_('OGRN number'),
     )
-    region = models.ForeignKey(
+    regions = models.ForeignKey(
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
         related_name='issuers',
         to='Regions',
-        verbose_name=_('Region'),
+        verbose_name=_('Regions'),
     )
     site = models.URLField(_('Site company'), blank=True, null=True)
 
@@ -46,4 +46,4 @@ class Regions(models.Model):
     state_uuid = models.CharField(_('Unique number in the state address register'), max_length=30, blank=True, null=True, db_index=True)
 
     def __str__(self):
-        return '{} "{}", pk={}'.format(_('Region'), self.munitipal_name, self.pk)
+        return '{} "{}", pk={}'.format(_('Regions'), self.munitipal_name, self.pk)
