@@ -16,6 +16,20 @@ class BrokerageAccountsSerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
+class IssueOfSecuritiesSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Issuers
+        fields = (
+            'url',
+            'comment',
+            'name',
+            'isin_code',
+            'issuers',
+            'securities_types',
+            'site',
+        )
+
+
 class IssuersSerializer(serializers.HyperlinkedModelSerializer):
     region_name = serializers.SerializerMethodField()
 

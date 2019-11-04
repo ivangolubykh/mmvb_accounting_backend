@@ -16,6 +16,36 @@ class BrokerageAccounts(models.Model):
         return '{} "{}", pk={}'.format(_('Brokerage account'), self.name, self.pk)
 
 
+class IssueOfSecurities(models.Model):
+    class Meta:
+        verbose_name = _('Issue of securities')
+        verbose_name_plural = _('Issue of security')
+
+    comment = models.TextField(_('Comment'), blank=True, null=True)
+    name = models.CharField(_('Name company'), max_length=256, unique=True)
+    isin_code = models.CharField(_('ISIN code'), max_length=256, unique=True)
+    issuers = models.ForeignKey(
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='issue_of_securities',
+        to='Issuers',
+        verbose_name=_('Issuer'),
+    )
+    securities_types = models.ForeignKey(
+        blank=False,
+        null=False,
+        on_delete=models.PROTECT,
+        related_name='issue_of_securities',
+        to='SecuritiesTypes',
+        verbose_name=_('Type of Securities'),
+    )
+    site = models.URLField(_('The site about issue of securities'), blank=True, null=True)
+
+    def __str__(self):
+        return '{} "{}", pk={}'.format(_('Issuer'), self.name, self.pk)
+
+
 class Issuers(models.Model):
     class Meta:
         verbose_name = _('Issuer')
@@ -23,7 +53,7 @@ class Issuers(models.Model):
 
     comment = models.TextField(_('Comment'), blank=True, null=True)
     name = models.CharField(_('Name company'), max_length=256, unique=True)
-    ogrn = models.URLField(
+    ogrn = models.CharField(
         blank=True,
         max_length=13,
         null=True,
@@ -36,7 +66,7 @@ class Issuers(models.Model):
         on_delete=models.SET_NULL,
         related_name='issuers',
         to='Regions',
-        verbose_name=_('Regions'),
+        verbose_name=_('Region'),
     )
     site = models.URLField(_('The site of the company'), blank=True, null=True)
 

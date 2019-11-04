@@ -10,10 +10,12 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ViewSetMixin
 
 from .models import BrokerageAccounts
+from .models import IssueOfSecurities
 from .models import Issuers
 from .models import Regions
 from .models import SecuritiesTypes
 from .serializers import BrokerageAccountsSerializer
+from .serializers import IssueOfSecuritiesSerializer
 from .serializers import IssuersSerializer
 from .serializers import RegionsSerializer
 from .serializers import RegionsNameListSerializer
@@ -47,6 +49,12 @@ class BrokerageAccountsView(AbstractMmvbView):
     permission_classes = (IsAuthenticated,)
     queryset = BrokerageAccounts.objects.all().order_by('name')
     serializer_class = BrokerageAccountsSerializer
+
+
+class IssueOfSecuritiesView(AbstractMmvbView):
+    permission_classes = (IsAuthenticated,)
+    queryset = IssueOfSecurities.objects.all().select_related('issuers', 'securities_types').order_by('name')
+    serializer_class = IssueOfSecuritiesSerializer
 
 
 class IssuerView(AbstractMmvbView):
